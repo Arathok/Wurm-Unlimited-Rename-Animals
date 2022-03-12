@@ -43,8 +43,8 @@ public class RenamePets implements WurmServerMod, Initable, PreInitable, Configu
         @Override
         public void onServerStarted() {
             // TODO Auto-generated method stub
-
-
+                logger.log(Level.INFO,"renameAnimals being loaded");
+                ModActions.registerBehaviourProvider(new RenameBehaviour());
         }
 
 

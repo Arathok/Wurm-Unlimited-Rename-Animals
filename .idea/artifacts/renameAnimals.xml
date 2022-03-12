@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="renameAnimals">
+    <output-path>D:/Spiele/Steam/steamapps/common/Wurm Unlimited Dedicated Server/mods/renameAnimals</output-path>
+    <root id="archive" name="renameAnimals.jar">
+      <element id="module-output" name="Wurm-Unlimited-Rename-Animals" />
+    </root>
+  </artifact>
+</component>

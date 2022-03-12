@@ -3,6 +3,8 @@ package org.arathok.wurmunlimited.mods.renamePets;
 import com.wurmonline.server.behaviours.ActionEntry;
 import com.wurmonline.server.creatures.Creature;
 import com.wurmonline.server.items.Item;
+import com.wurmonline.server.items.ItemList;
+import org.gotti.wurmunlimited.modsupport.actions.BehaviourProvider;
 import org.gotti.wurmunlimited.modsupport.actions.ModActions;
 
 import java.util.ArrayList;
@@ -13,13 +15,13 @@ public class RenameBehaviour implements BehaviourProvider {
 
 
 
-    private final List<ActionEntry> apply;
-    private final OilPerformer oilPerformer;
+    private final List<ActionEntry> rename;
+    private final RenameAction renameAction;
 
-    public OilBehaviour() {
-        this.oilPerformer = new OilPerformer();
-        this.apply = Collections.singletonList(oilPerformer.actionEntry);
-        ModActions.registerActionPerformer(oilPerformer);
+    public RenameBehaviour() {
+        this.renameAction = new RenameAction();
+        this.rename = Collections.singletonList(renameAction.actionEntry);
+        ModActions.registerActionPerformer(renameAction);
 
     }
 
@@ -27,50 +29,16 @@ public class RenameBehaviour implements BehaviourProvider {
     //, , , , ;
 
     @Override
-    public List<ActionEntry> getBehavioursFor(Creature performer, Item source, Item target) {
+    public List<ActionEntry> getBehavioursFor(Creature performer, Item source, Creature target) {
 
-        if (source.getTemplateId() == OilItems.weaponOilDemiseAnimalId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
+        if (RenameAction.canUse(performer,target)) {
+            if(source.getTemplateId()==ItemList.paperSheet)
+                return new ArrayList<>(rename);
 
-        } else if (source.getTemplateId() == OilItems.weaponOilDemiseMonsterId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-
-        } else if (source.getTemplateId() == OilItems.weaponOilDemiseLegendaryId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-
-        } else if (source.getTemplateId() == OilItems.weaponOilDemiseHumanId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-
-        } else if (source.getTemplateId() == OilItems.weaponOilLickOfFireId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-
-        } else if (source.getTemplateId() == OilItems.weaponOilKissOfFrostId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-
-        } else if (source.getTemplateId() == OilItems.weaponOilHeartseekerId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-
-        } else if (source.getTemplateId() == OilItems.weaponOilPlagueId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-
-        } else if (source.getTemplateId() == OilItems.weaponOilPoisonId) {
-            if (OilPerformer.canUse(performer, source)&&OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-
-        }	else if (source.getTemplateId() == OilItems.weaponOilLeechId) {
-            if (OilPerformer.canUse(performer, source) && OilPerformer.isWeapon(target))
-                return new ArrayList<>(apply);
-        }else
+        } else
             return null;
-        return null;
 
+
+        return null;
     }
 }
