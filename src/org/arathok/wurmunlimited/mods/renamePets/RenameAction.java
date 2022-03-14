@@ -87,11 +87,7 @@ public class RenameAction implements ActionPerformer
 
                         try {
                             ReflectionUtil.callPrivateMethod(target.getStatus(), ReflectionUtil.getMethod(DbCreatureStatus.class, "saveCreatureName", new Class[]{String.class}), newName);
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        } catch (InvocationTargetException e) {
-                            e.printStackTrace();
-                        } catch (NoSuchMethodException e) {
+                        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                             e.printStackTrace();
                         }
 
