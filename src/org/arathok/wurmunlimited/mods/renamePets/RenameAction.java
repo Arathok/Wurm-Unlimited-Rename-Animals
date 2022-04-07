@@ -95,6 +95,10 @@ public class RenameAction implements ActionPerformer
                         Items.destroyItem(source.getWurmId());
 
                     }
+                else
+                    {
+                        performer.getCommunicator().sendSafeServerMessage("Something is wrong with your inscription. You choose to not rename this Animal.");
+                    }
             return propagate(action,
                     ActionPropagation.FINISH_ACTION,
                     ActionPropagation.NO_SERVER_PROPAGATION,
