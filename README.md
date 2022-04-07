@@ -1,4 +1,4 @@
-# Wurm-Unlimited-Rename-Pets
+# Wurm-Unlimited-Rename-Animals
 Allows you to rename animals so long the are tamed by you or cared for by you and must be branded to your village .
 Use a paper sheet and inscribe the new name of the animal onto it. Now Special characters like ",.!' etc.
 Activate the paper sheet.
