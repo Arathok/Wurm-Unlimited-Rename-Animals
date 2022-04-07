@@ -32,7 +32,7 @@ public class RenameBehaviour implements BehaviourProvider {
     public List<ActionEntry> getBehavioursFor(Creature performer, Item source, Creature target) {
 
         if (RenameAction.canUse(performer,target)) {
-            if(source.getTemplateId()==ItemList.paperSheet)
+            if(source.getTemplateId()==ItemList.paperSheet||source.getTemplateId()==ItemList.papyrusSheet)
                 return new ArrayList<>(rename);
 
         } else

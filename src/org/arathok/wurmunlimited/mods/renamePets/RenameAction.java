@@ -31,7 +31,7 @@ public class RenameAction implements ActionPerformer
 
         public RenameAction()
         {
-            actionEntry = new ActionEntryBuilder((short) ModActions.getNextActionId(), "rename", "renaming",
+            actionEntry = new ActionEntryBuilder((short) ModActions.getNextActionId(), "Rename", "renaming",
                                                  new int[]{
                                                          6 /* ACTION_TYPE_NOMOVE */,
                                                          48 /* ACTION_TYPE_ENEMY_ALWAYS */,
@@ -74,7 +74,7 @@ public class RenameAction implements ActionPerformer
             }
             else
                 if(source.getInscription()!=null)
-                    if (!source.getInscription().getInscription().isEmpty()) {
+                    if (!source.getInscription().getInscription().isEmpty()&&!source.getInscription().getInscription().contains("appears")&&!source.isHarvestReport()&&!source.getName().contains("recipe")) {
                         performer.getCommunicator().sendSafeServerMessage("you rename the "+target.getName()+" to "+source.getInscription().getInscription());
                         RenamePets.logger.log(Level.INFO,performer.getName()+" renamed" +target.getName() +" to "+source.getInscription().getInscription() );
                         String newName = source.getInscription().getInscription();
